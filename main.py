@@ -9,6 +9,7 @@ from typing import Tuple
 
 
 API_TOKEN = 'YOUR_BOT_API_TOKEN'
+DATABASE_FOLDER = "YOUR_DATABASE_FOLDER"
 
 
 async def ensure_user_in_db(db: DataBase, table: str, user_id: int, first_name: str, username: str, url: str) -> None:
@@ -64,7 +65,7 @@ async def main() -> None:
         )
     }
 
-    async with DataBase("test.db") as db:
+    async with DataBase(f"{DATABASE_FOLDER}/database.db") as db:
         #? Инициализация таблицы для всех пользователей
         await db.create_table(
             table   = "users",
